@@ -2,6 +2,7 @@
 let weatherKey = "cdecd2d014031662f81622cfc916ac8b"
 let toCelsius = "&units=metric";
 let inputCity = 'London';
+var submitBtn = $("#submitBtn");
 
 fetch('https://api.openweathermap.org/data/2.5/weather?q=' + inputCity + toCelsius + '&APPID=' + weatherKey, {
     method: 'GET',
@@ -24,25 +25,20 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=' + inputCity + toCelsi
 
 
         // FUNCTION TO WRITE TO DOM
-        // function displayResults() {
+        function displayResults() {
             // LOCAL SCOPES VARS
             var citySelector = $("#city");
             var currentInfo = $("#current-info");
             var inputCity = $("#city-input").val();
-            var submitBtn = $("#submitBtn");
+            
+            console.log("Input city is: ", inputCity);
 
-            submitBtn.click(function (e) { 
-                e.preventDefault();
-                
-                console.log(inputCity);
-            });
-            // STARTING NEW CODE FOR THIS SECTION 
-
-            // END OF NEW CODE FOR THIS SECTION
             citySelector.text(requestedCity);
             currentInfo.text("Current Temperature: " + currentTemp);
-        // };
+        };
 
         // FUNCTION CALL
+
+        submitBtn.click(displayResults);
         // displayResults();
     });
