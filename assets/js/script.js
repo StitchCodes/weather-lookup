@@ -1,10 +1,20 @@
 // FETCH DEMO
 let weatherKey = "cdecd2d014031662f81622cfc916ac8b"
 let toCelsius = "&units=metric";
-let inputCity = 'London';
+let inputCity;
 var submitBtn = $("#submitBtn");
+var citySelector = $("#city");
+var currentInfo = $("#current-info");
 
-fetch('https://api.openweathermap.org/data/2.5/weather?q=' + inputCity + toCelsius + '&APPID=' + weatherKey, {
+// // FUNCTION TO WRITE TO DOM
+
+// FUNCTION CALL
+function callAPI() {  
+
+    inputCity = $("#city-input").val();
+    console.log("Input city is: ", inputCity);
+
+    fetch('https://api.openweathermap.org/data/2.5/weather?q=' + inputCity + toCelsius + '&APPID=' + weatherKey, {
     method: 'GET',
 })
     .then(function (response) {
@@ -23,22 +33,8 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=' + inputCity + toCelsi
         console.log(maxTemp);
         console.log(minTemp);
 
-
-        // FUNCTION TO WRITE TO DOM
-        function displayResults() {
-            // LOCAL SCOPES VARS
-            var citySelector = $("#city");
-            var currentInfo = $("#current-info");
-            var inputCity = $("#city-input").val();
-            
-            console.log("Input city is: ", inputCity);
-
-            citySelector.text(requestedCity);
-            currentInfo.text("Current Temperature: " + currentTemp);
-        };
-
-        // FUNCTION CALL
-
-        submitBtn.click(displayResults);
-        // displayResults();
+        citySelector.text(requestedCity);
+        currentInfo.text("Current Temperature: " + currentTemp);
     });
+};
+submitBtn.click(callAPI);
