@@ -24,18 +24,25 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=' + inputCity + toCelsi
 
 
         // FUNCTION TO WRITE TO DOM
-        function displayResults() {
+        // function displayResults() {
             // LOCAL SCOPES VARS
             var citySelector = $("#city");
             var currentInfo = $("#current-info");
+            var inputCity = $("#city-input").val();
+            var submitBtn = $("#submitBtn");
 
+            submitBtn.click(function (e) { 
+                e.preventDefault();
+                
+                console.log(inputCity);
+            });
             // STARTING NEW CODE FOR THIS SECTION 
 
             // END OF NEW CODE FOR THIS SECTION
             citySelector.text(requestedCity);
             currentInfo.text("Current Temperature: " + currentTemp);
-        };
+        // };
 
         // FUNCTION CALL
-        displayResults();
+        // displayResults();
     });

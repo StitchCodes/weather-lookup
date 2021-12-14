@@ -27,13 +27,13 @@
                     <div class="row">
                         <form class="col s12">
                             <div class="row">
-                                <div class="input-field col s6">
-                                    <input placeholder="Get weather from:" type="text" class="validate">
+                                <form class="input-field col s6">
                                     <label for="search">Weather from:</label>
-                                </div>
+                                    <input id="city-input" placeholder="Get weather from:" type="text" name="search" class="validate">
+                                </form>
                             </div>
-                            <button class="row btn waves-effect waves-light" type="search" name="action">
-                                <i class="small material-icons right" id="search">Search</i>
+                            <button class="row btn waves-effect waves-light" type="submit" name="action" form="city-input" value="Submit" id="submitBtn">
+                                <i class="small material-icons right">Search</i>
                             </button>
                         </form>
                     </div>
